@@ -1,7 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container">
-        <a class="navbar-brand" routerLink="/" routerLinkActive="active">Match Mate</a>
-
+        @if (accountService.currentUser()) {
+            <a class="navbar-brand" routerLink="/members" routerLinkActive="active">Match Mate</a>
+        }
+        @else {
+            <a class="navbar-brand" routerLink="/" routerLinkActive="active">Match Mate</a>
+        }
 
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             @if (accountService.currentUser()) {
@@ -17,10 +21,10 @@
                 <li *appHasRole="['Admin', 'Moderator']" class="nav-item">
                     <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
                 </li>
-            }
-            <li class="nav-item">
-                <a routerLink="/errors" routerLinkActive="active" class="nav-link">Errors</a>
-            </li>
+                <li class="nav-item">
+                    <a routerLink="/errors" routerLinkActive="active" class="nav-link">Errors</a>
+                </li>
+            }            
         </ul>
 
         @if (accountService.currentUser()) {
